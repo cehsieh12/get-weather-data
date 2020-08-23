@@ -7,7 +7,7 @@ r = requests.get(
 data = r.json()["records"]["location"]
 df = pd.DataFrame()
 df["location"] = data
-# df.head()
+
 result = []
 for i in data:
     dic = {}
@@ -22,4 +22,4 @@ df = pd.DataFrame(result)
 
 conn = sqlite3.connect('weather.db')
 df.to_sql('weather', conn, if_exists='replace', index=False)
-pd.read_sql('select * from weather', conn)
+# pd.read_sql('select * from weather', conn)
